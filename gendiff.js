@@ -2,11 +2,10 @@
 import { Command } from 'commander';
 
 const program = new Command();
-program.option('-h, --help', 'usage help').parse();
-
-const options = program.opts();
-const helpDescription = 'Usage: gendiff [options]\n\nCompares two configuration files and shows a difference.\n\nOptions:\n -V, --version        output the version number\n -h, --help           output usage information';
-
-if (options.help) {
-    console.log(helpDescription);
-}
+program
+    .description('Compares two configuration files and shows a difference.')
+    .version('1.0.0')
+    .arguments('<filepath1> <filepath2>')
+    .helpOption('-h, --help', 'output usage information')
+    .option('-f, --format [type]', 'output format')
+    .parse();
